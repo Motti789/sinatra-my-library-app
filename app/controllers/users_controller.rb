@@ -12,10 +12,6 @@ class UsersController < ApplicationController
       session[:user_id] = @user.id # Here's where the login happens
       redirect "users/#{@user.id}"
 
-
-
-
-
     else
      end
     end
