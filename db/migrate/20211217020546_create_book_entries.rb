@@ -1,4 +1,4 @@
-class CreateBookEntries < ActiveRecord::Migration
+class CreateBookEntries < ActiveRecord::Migration[5.2]
   def change
     create_table :book_entries do |t|
       t.string :title
