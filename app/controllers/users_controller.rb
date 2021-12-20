@@ -11,7 +11,6 @@ class UsersController < ApplicationController
     if @user.authenticate(params[:password])
       session[:user_id] = @user.id # Here's where the login happens
       redirect "users/#{@user.id}"
-
     else
      redirect '/signup'
      end
@@ -35,7 +34,6 @@ class UsersController < ApplicationController
     
     get '/users/:id' do
      @user = User.find_by(id: params[:id])
-
       erb :show
     end
 
