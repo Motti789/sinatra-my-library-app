@@ -13,15 +13,26 @@ class UsersController < ApplicationController
       redirect "users/#{@user.id}"
 
     else
+
      end
     end
 
     # render the signup form
     get '/signup' do
-
+    erb :signup
     end
 
-    get '/users/:id' do     #dynamic route which will change based off the user
-      "This is the users route"
+    post '/users' do
+      if params[:name] !="" && params[:email] != "" && params[:password] != ""
+       @user = User.create(params)
+       redirect "/#{@user.id"}
+       erb :show
+       else
+      end
+    end
+
+    
+    get '/users/:id' do     
+      erb :show
     end
 end
