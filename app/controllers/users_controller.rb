@@ -13,7 +13,7 @@ class UsersController < ApplicationController
       redirect "users/#{@user.id}"
 
     else
-
+     jnjnjnj
      end
     end
 
@@ -25,14 +25,15 @@ class UsersController < ApplicationController
     post '/users' do
       if params[:name] !="" && params[:email] != "" && params[:password] != ""
        @user = User.create(params)
-       redirect "/#{@user.id"}
-       erb :show
+       redirect "/users/#{@user.id}"
        else
+        
       end
     end
 
     
-    get '/users/:id' do     
+    get '/users/:id' do
+     @user = User.find_by(id: params[:id])     
       erb :show
     end
 end
