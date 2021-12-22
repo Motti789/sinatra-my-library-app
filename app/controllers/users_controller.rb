@@ -8,12 +8,11 @@ class UsersController < ApplicationController
      # receive the login form, find the user, and log him in.
     post '/login' do
     @user = User.find_by(email: params[:email])
-    if @user.authenticate(params[:password])
+    if @user && @user.authenticate(params[:password])
       session[:user_id] = @user.id # Here's where the login happens
-      puts session
-      redirect "users/#{@user.id}"
+      redirect to "/users/#{@user.id}"
     else
-     redirect '/signup'
+     redirect to '/login'
      end
     end
 
