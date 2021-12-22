@@ -1,0 +1,11 @@
+<h2> ALL BOOK ENTRIES </h2>
+<% @book_entries.each do |book_entry| %>
+<h4><a href="/book_entries/<%= book_entry.id %>">
+<%= book_entry.created_at %><h4>
+<%= book_entry.title %>
+<br>
+<%= book_entry.author %>
+<br>
+<%= book_entry.genre %></p>
+
+<%end%>

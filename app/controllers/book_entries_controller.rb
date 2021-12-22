@@ -1,5 +1,13 @@
 class BookEntriesController < ApplicationController
 
+    get '/book_entries' do
+      @book_entries = BookEntry.all
+      erb :'/book_entries/index'
+    end
+    
+    
+    
+    
     get '/book_entries/new' do
         if logged_in?
       erb :'/book_entries/new'
@@ -29,7 +37,7 @@ class BookEntriesController < ApplicationController
     get '/book_entries/:id/edit' do
         set_book_entry
         if logged_in?
-        if @book_entry.user == current_user
+        if authorized_to_edit?(@book_entry)
         erb :'/book_entries/edit'
         else
           redirect "users/#{current_user.id}"
@@ -43,7 +51,7 @@ class BookEntriesController < ApplicationController
     patch '/book_entries/:id' do
       set_book_entry
       if logged_in?
-      if @book_entry.user == current_user
+      if authorized_to_edit?(@book_entry)r
 
       @book_entry.update(title: params[:title], author: params[:author], genre: params[:genre])
       redirect "/book_entries/#{@book_entry.id}"

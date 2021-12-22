@@ -2,4 +2,6 @@ SHOW PAGE FOR A BOOK ENTRY
 
 <p><%= @book_entry.title %>  <%= @book_entry.author %>  <%= @book_entry.genre %></p>
 
+<% if authorized_to_edit?(@book_entry) %>
 <a href="/book_entries/<%=@book_entry.id%>/edit">Edit Entry</a>
+<%end%>
