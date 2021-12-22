@@ -22,17 +22,43 @@ class BookEntriesController < ApplicationController
     end
 
     get '/book_entries/:id' do
-      @book_entry = BookEntry.find(params[:id])
+      set_book_entry
       erb :'/book_entries/show'
     end
 
     get '/book_entries/:id/edit' do
-     @book_entry = BookEntry.find(params[:id])
-     erb :'/book_entries/edit'
+        set_book_entry
+        if logged_in?
+        if @book_entry.user == current_user
+        erb :'/book_entries/edit'
+        else
+          redirect "users/#{current_user.id}"
+        end
+    else
+        redirect '/'
+
+        end
     end
 
     patch '/book_entries/:id' do
-      "Hello World"
+      set_book_entry
+      if logged_in?
+      if @book_entry.user == current_user
+
+      @book_entry.update(title: params[:title], author: params[:author], genre: params[:genre])
+      redirect "/book_entries/#{@book_entry.id}"
+      else
+      redirect "users/#{current_user.id}"
+      end
+     else
+        redirect '/'
+     end
+    end
+
+    private
+
+    def set_book_entry
+      @book_entry = BookEntry.find(params[:id])
     end
     
 end
