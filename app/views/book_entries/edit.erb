@@ -1,0 +1,14 @@
+EDIT PAGE FOR BOOK ENTRY
+
+
+
+<form class="" action="/book_entries/<%= @book_entry.id %>" method="post">
+<input type="hidden" name="_method" value="patch" 
+<label for="title">Title: </label>
+<textarea name="title" style="width:auto; height:auto;"><%=@book_entry.title%></textarea>  
+<label for="auther">Author: </label>
+<textarea name="author" style="width:auto; height:auto;"><%=@book_entry.author%></textarea>
+<label for="genre">Genre: </label>
+<textarea name="genre" style="width:auto; height:auto;"><%=@book_entry.genre%></textarea>
+<input type="submit" name= "" value="Edit Entry">
+</form>

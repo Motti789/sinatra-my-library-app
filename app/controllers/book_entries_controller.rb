@@ -27,8 +27,12 @@ class BookEntriesController < ApplicationController
     end
 
     get '/book_entries/:id/edit' do
-        
+     @book_entry = BookEntry.find(params[:id])
      erb :'/book_entries/edit'
+    end
+
+    patch '/book_entries/:id' do
+      "Hello World"
     end
     
 end
