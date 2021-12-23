@@ -2,6 +2,13 @@ SHOW PAGE FOR A BOOK ENTRY
 
 <p><%= @book_entry.title %>  <%= @book_entry.author %>  <%= @book_entry.genre %></p>
 
-<% if authorized_to_edit?(@book_entry) %>
+ <% if authorized_to_edit?(@book_entry) %> 
 <a href="/book_entries/<%=@book_entry.id%>/edit">Edit Entry</a>
-<%end%>
+
+
+<form class="" action="/book_entries/<%=@book_entry.id%>"
+ method="post">
+ <input type="hidden" name="_method" value="DELETE"> 
+ <input type="submit" name="" value="Delete this Entry"> 
+</form>
+ <%end%>

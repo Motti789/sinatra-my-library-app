@@ -28,7 +28,7 @@ class ApplicationController < Sinatra::Base
     end
 
     def authorized_to_edit?(book_entry)
-      book_entry.user = current_user
+      book_entry.user == current_user
     end
 
   end

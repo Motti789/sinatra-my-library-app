@@ -51,7 +51,7 @@ class BookEntriesController < ApplicationController
     patch '/book_entries/:id' do
       set_book_entry
       if logged_in?
-      if authorized_to_edit?(@book_entry)r
+      if authorized_to_edit?(@book_entry)
 
       @book_entry.update(title: params[:title], author: params[:author], genre: params[:genre])
       redirect "/book_entries/#{@book_entry.id}"
@@ -61,6 +61,16 @@ class BookEntriesController < ApplicationController
      else
         redirect '/'
      end
+    end
+
+    delete '/book_entries/:id' do
+      set_book_entry
+      if authorized_to_edit?(@book_entry)
+        @book_entry.destroy
+        redirect '/book_entries'
+      else
+      redirect '/book_entries'
+      end
     end
 
     private

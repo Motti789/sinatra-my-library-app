@@ -15,10 +15,11 @@
   </head>
   <body>
   <div class="nav">
+  <% if logged_in? %>
   <a href="/logout">Logout</a> 
   <a href="/book_entries">All Book Entries</a>
   <a href="/book_entries/new">New Entry</a>
-
+   <%end%>
   </div>
     <div class="wrapper">
 
