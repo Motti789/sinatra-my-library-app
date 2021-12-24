@@ -1,12 +1,17 @@
 <h2> ALL BOOK ENTRIES </h2>
 <% @book_entries.each do |book_entry| %>
-<h4><a href="/book_entries/<%= book_entry.id %>">
-<%= book_entry.created_at %><h4>
-<%= book_entry.title %>
+<a href="/book_entries/<%= book_entry.id %>">
+
+
+<%if authorized_to_edit?(book_entry)%>
+
+Title: <%= book_entry.title %>
 <br>
-<%= book_entry.author %>
+Author: <%= book_entry.author %>
 <br>
-<%= book_entry.genre %></p>
+Genre: <%= book_entry.genre %></p>
 <p> By <%=book_entry.user.name%></p>
+<%end%>
 
 <%end%>
+<a href="/">Return to the home page</a>

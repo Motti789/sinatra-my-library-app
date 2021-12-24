@@ -1,5 +1,10 @@
 A simple book app which allows the user to log in, sign up, and add all of thier books. Users can also edit and delete their own entries.
 
+
+USAGE
+To use this app, just clone, run rake db:migrate and then run shotgun. Everything should be set up.
+
+
 LICENSE
 
 Copyright <2021> <Motti Wilschanski>
