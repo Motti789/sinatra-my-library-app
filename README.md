@@ -2,6 +2,7 @@ A simple book app which allows the user to log in, sign up, and add all of thier
 
 
 USAGE
+
 To use this app, just clone, run rake db:migrate and then run shotgun. Everything should be set up.
 
 

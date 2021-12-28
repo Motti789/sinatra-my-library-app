@@ -12,6 +12,7 @@ Genre:<%= @book_entry.genre %>
 <a href="/book_entries/<%=@book_entry.id%>/edit">Edit Entry</a>
  &nbsp;
 <a href="/">Return to the home page</a>
+
 <form class="" action="/book_entries/<%=@book_entry.id%>"
  method="post">
  <input type="hidden" name="_method" value="DELETE"> 
