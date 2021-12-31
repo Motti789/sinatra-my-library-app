@@ -67,6 +67,7 @@ class BookEntriesController < ApplicationController
       set_book_entry
       if authorized_to_edit?(@book_entry)
         @book_entry.destroy
+        flash[:message1] = "Successfully deleted your entry!"
         redirect '/book_entries'
       else
       redirect '/book_entries'

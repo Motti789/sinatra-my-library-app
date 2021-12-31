@@ -20,4 +20,8 @@ Genre:<%= @book_entry.genre %>
 </form>
 
  <%end%>
+ <%if flash[:message] %>
+<h3><%= flash[:message] %></yh3h3>
+<% end %>
+
  
