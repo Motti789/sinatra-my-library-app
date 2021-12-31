@@ -7,6 +7,10 @@ Author:<%= @book_entry.author %>
 Genre:<%= @book_entry.genre %>
 <br><br>
 
+<%if flash[:book_entry] %>
+<h3><%= flash[:book_entry] %></yh3h3>
+<% end %>
+<br><br>
 
  <% if authorized_to_edit?(@book_entry) %> 
 <a href="/book_entries/<%=@book_entry.id%>/edit">Edit Entry</a>
@@ -20,8 +24,6 @@ Genre:<%= @book_entry.genre %>
 </form>
 
  <%end%>
- <%if flash[:message] %>
-<h3><%= flash[:message] %></yh3h3>
-<% end %>
+ 
 
  

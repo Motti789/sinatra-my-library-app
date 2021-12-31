@@ -15,3 +15,7 @@ Genre: <%= book_entry.genre %></p>
 
 <%end%>
 <a href="/">Return to the home page</a>
+
+<%if flash[:delete] %>
+<h3><%= flash[:delete] %></yh3h3>
+<% end %>

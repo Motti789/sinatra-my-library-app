@@ -5,5 +5,9 @@
   <a href="/book_entries/new">Create A New Entry</a>
    &nbsp;
   <a href="/book_entries">View All Of Your Book Entries</a>
+   <br><br>
+  <%if flash[:login] %>
+<h3><%= flash[:login] %></yh3h3>
+<% end %>
   
   

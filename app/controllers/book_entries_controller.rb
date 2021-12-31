@@ -23,6 +23,7 @@ class BookEntriesController < ApplicationController
         if params[:title] !="" && params[:author] != "" && params[:genre] != ""
          @book_entry = BookEntry.create(title: params[:title], author: params[:author], genre: params[:genre],
          user_id: current_user.id)
+         flash[:book_entry] = "You have successfully created a new entry."
           redirect "/book_entries/#{@book_entry.id}"
         else
          redirect '/book_entries/new'
@@ -67,7 +68,7 @@ class BookEntriesController < ApplicationController
       set_book_entry
       if authorized_to_edit?(@book_entry)
         @book_entry.destroy
-        flash[:message1] = "Successfully deleted your entry!"
+        flash[:delete] = "Your entry was successfully deleted."
         redirect '/book_entries'
       else
       redirect '/book_entries'
