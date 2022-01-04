@@ -7,31 +7,34 @@ class UsersController < ApplicationController
 
      # receive the login form, find the user, and log him in.
     post '/login' do
-    user = User.find_by(email: params[:email])
-    if user && user.authenticate(params[:password])
+     user = User.find_by(email: params[:email])
+     if user && user.authenticate(params[:password])
       session[:user_id] = user.id # Here's where the login happens
       flash[:login] = "Login Successful!"
       puts session
       redirect "users/#{user.id}"
-    else
+     else
       flash[:alert] = "Email or password is incorrect please try again."
-     redirect '/login'
+      redirect '/login'
      end
     end
 
-    # render the signup form
+    #render the signup form
     get '/signup' do
-    erb :'/users/signup'
+     erb :'/users/signup'
     end
 
     post '/users' do
-      if params[:name] !="" && params[:email] != "" && params[:password] != ""
+      if params[:name] == "" || params[:email] == "" || params[:password] == ""
+        flash[:signup1] = "Error! Please fill out all fields."
+        redirect '/signup'
+        
+      else
        user = User.create(params)
        
        session[:user_id] = user.id
+       flash[:signup2] = "Signup Successful!"
        redirect "/users/#{user.id}"
-       else
-        redirect 'users/signup'
       end
     end
 
