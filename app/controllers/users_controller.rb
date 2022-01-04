@@ -2,7 +2,11 @@ class UsersController < ApplicationController
 
     # render the login form
     get '/login' do
+      if !logged_in?
       erb :'/users/login'
+      else
+        redirect to '/book_entries'
+      end
     end
 
      # receive the login form, find the user, and log him in.
@@ -21,7 +25,11 @@ class UsersController < ApplicationController
 
     #render the signup form
     get '/signup' do
+      if !logged_in?
      erb :'/users/signup'
+      else 
+        redirect to '/book_entries'
+      end
     end
 
     post '/users' do
