@@ -36,7 +36,6 @@ class UsersController < ApplicationController
       if params[:name] == "" || params[:email] == "" || params[:password] == ""
         flash[:signup1] = "Error! Please fill out all fields."
         redirect '/signup'
-        
       else
        user = User.create(params)
        
@@ -50,6 +49,10 @@ class UsersController < ApplicationController
     get '/users/:id' do
      @user = User.find_by(id: params[:id])
       erb :'/users/show'
+    end
+
+    get '/about' do
+      erb :'users/about'
     end
 
     get '/logout' do 
